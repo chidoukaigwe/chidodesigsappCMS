@@ -11,30 +11,34 @@ class ArticleController extends Controller
 
     public function index()
     {
-        //  Get Articles
-        $articles = Article::orderBy('created_at', 'desc')->paginate(5);
 
-        //  Return Collection of articles as a resource
-        return ArticleResource::collection($articles);
+        return request()->user()->articles;
 
     }
 
 
     public function store(Request $request)
     {
-
-        Article::create($this->validateData());
+        //  fetch user that made req
+        //  use the article relationship on the user to do the creation
+       request()->user()->articles()->create($this->validateData());
 
     }
 
 
     public function show(Article $article)
     {
+        if (request()->user()->isNot($article->user)) {
+            return response([], 403);
+        }
         return $article;
     }
 
     public function update(Article $article)
     {
+        if (request()->user()->isNot($article->user)) {
+            return response([], 403);
+        }
 
         $article->update($this->validateData());
 
@@ -42,6 +46,10 @@ class ArticleController extends Controller
 
     public function destroy(Article $article)
     {
+
+        if (request()->user()->isNot($article->user)) {
+            return response([], 403);
+        }
 
         $article->delete();
 
