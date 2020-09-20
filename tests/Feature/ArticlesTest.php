@@ -37,7 +37,11 @@ class ArticlesTest extends TestCase
         $response = $this->get('/api/articles?api_token=' . $user->api_token);
 
         $response->assertJsonCount(1)
-            ->assertJson([['id' => $article->id]]);
+            ->assertJson([
+                'data' => [
+                    ['article_id' => $article->id]
+                ]
+            ]);
     }
 
     /** @test */
@@ -89,9 +93,14 @@ class ArticlesTest extends TestCase
         $response = $this->get('/api/article/' . $article->id . '?api_token=' .  $this->user->api_token);
 
         $response->assertJson([
-            'title' => $article->title,
-            'body' => $article->body,
-            'excerpt' => $article->excerpt,
+            'data' => [
+                'article_id' => $article->id,
+                'title' => $article->title,
+                'body' => $article->body,
+                'excerpt' => $article->excerpt,
+                'created_at' => $article->created_at->format('m/d/Y'),
+                'last_updated' => $article->updated_at->diffForHumans(),
+            ]
         ]);
 
     }

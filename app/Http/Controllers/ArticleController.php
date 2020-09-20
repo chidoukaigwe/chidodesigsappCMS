@@ -13,7 +13,7 @@ class ArticleController extends Controller
     {
         $this->authorize('viewAny', Article::class);
 
-        return request()->user()->articles;
+        return ArticleResource::collection(request()->user()->articles);
 
     }
 
@@ -21,6 +21,7 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $this->authorize('viewAny', Article::class);
+
         //  fetch user that made req
         //  use the article relationship on the user to do the creation
        request()->user()->articles()->create($this->validateData());
@@ -29,16 +30,17 @@ class ArticleController extends Controller
 
     public function show(Article $article)
     {
-        //  Code example without creating a policy
-
-        // if (request()->user()->isNot($article->user)) {
-        //     return response([], 403);
-        // }
+        /**
+         *  Code example without creating a policy
+         *  if (request()->user()->isNot($article->user)) {
+         *    return response([], 403);
+         *   }
+         */
 
         //  Can a user view this article?
         $this->authorize('view', $article);
 
-        return $article;
+        return new ArticleResource($article);
     }
 
     public function update(Article $article)
@@ -68,7 +70,6 @@ class ArticleController extends Controller
             'body' => 'required',
             'excerpt' => 'required',
         ]);
-
 
     }
 }
