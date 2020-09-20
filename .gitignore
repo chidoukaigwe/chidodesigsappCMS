@@ -1,0 +1,48 @@
+/node_modules
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+
+#Laravel Specific files
+/vendor
+.env
+/public/.htaccess
+/storage
+storage/*.key
+.env.backup
+
+# Ignore cache
+.cache/
+
+# ignore Editor files
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+_ide_helper.php
+/.idea
+/.vscode
+# Eclipse project files
+.buildpath
+.project
+.settings/
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite# ignore compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so# ignore packaged files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip

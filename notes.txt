@@ -1,0 +1,45 @@
+database - laravel_articles_api
+user - articles_api_user
+password - FLL7oh0ccUH20nuu
+
+Laravel API With Resources
+
+What are resources?
+
+- Resources are like templates for how your data is arranged/response
+- Template JSON Responses from API
+
+1 - Set Up Local Database
+2 - Create & Make Migration
+COMMAND: php artisan make:migration create_articles_table --create=articles
+3 - Go to migrations in the Database folder,and add the neccessary fields
+
+//  Create seed data for database
+COMMAND: php artisan make:seeder ArticlesTableSeeder
+* Access ArticlesTableSeeder file and review code
+* Create Factory for Articles
+COMMAND: php artisan make:factory ArticleFactory
+* Access ArticleFactory file and review code
+
+//  Make A Model For Article
+COMMAND: php artisan make:model Article
+
+4 - Run Migrations To database
+* php artisan migrate
+* Add seed data
+** php artisan db:seed
+
+//  Seed data has been added to the Database we have something to work from.
+//  Create Controllers and Routes
+
+(make the controller a resource)
+5 - COMMAND: php artisan make:controller ArticleController --resource (--resource flag sets up all methods that respond to HTTP verbs)
+
+//  Create A Resource
+COMMAND: php artisan make:resource Article
+
+// Vue.js Frontend
+* composer require laravel/ui
+
+// Code To be added app.blade
+-
