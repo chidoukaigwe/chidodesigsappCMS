@@ -21,14 +21,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //  List All Articles
 Route::get('articles', 'ArticleController@index');
 
-//  List Single Article
-Route::get('article/{id}', 'ArticleController@show');
+
 
 //  Create New Article
 Route::post('/article', 'ArticleController@store');
 
-//  Update Article
-Route::put('article', 'ArticleController@store');
+//  List Single Article
+Route::get('/article/{article}', 'ArticleController@show');
+
+//  Update Article [deprecating route]
+// Route::put('article', 'ArticleController@store');
+
+Route::patch('/article/{article}', 'ArticleController@update');
 
 //  Delete Article
-Route::delete('article/{id}', 'ArticleController@destroy');
+Route::delete('article/{article}', 'ArticleController@destroy');
