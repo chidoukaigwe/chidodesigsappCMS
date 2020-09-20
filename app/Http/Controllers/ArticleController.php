@@ -11,6 +11,7 @@ class ArticleController extends Controller
 
     public function index()
     {
+        $this->authorize('viewAny', Article::class);
 
         return request()->user()->articles;
 
@@ -19,26 +20,31 @@ class ArticleController extends Controller
 
     public function store(Request $request)
     {
+        $this->authorize('viewAny', Article::class);
         //  fetch user that made req
         //  use the article relationship on the user to do the creation
        request()->user()->articles()->create($this->validateData());
 
     }
 
-
     public function show(Article $article)
     {
-        if (request()->user()->isNot($article->user)) {
-            return response([], 403);
-        }
+        //  Code example without creating a policy
+
+        // if (request()->user()->isNot($article->user)) {
+        //     return response([], 403);
+        // }
+
+        //  Can a user view this article?
+        $this->authorize('view', $article);
+
         return $article;
     }
 
     public function update(Article $article)
     {
-        if (request()->user()->isNot($article->user)) {
-            return response([], 403);
-        }
+
+        $this->authorize('view', $article);
 
         $article->update($this->validateData());
 
@@ -47,9 +53,8 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
 
-        if (request()->user()->isNot($article->user)) {
-            return response([], 403);
-        }
+        $this->authorize('view', $article);
+
 
         $article->delete();
 
