@@ -6,6 +6,7 @@ use App\User;
 use App\Article;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ArticlesTest extends TestCase
@@ -36,10 +37,16 @@ class ArticlesTest extends TestCase
 
         $response = $this->get('/api/articles?api_token=' . $user->api_token);
 
+        //  dd(json_decode($response->getContent()));
+
         $response->assertJsonCount(1)
             ->assertJson([
                 'data' => [
-                    ['article_id' => $article->id]
+                    [
+                        'data' => [
+                            'article_id' => $article->id
+                        ]
+                    ]
                 ]
             ]);
     }
@@ -57,13 +64,23 @@ class ArticlesTest extends TestCase
     public function an_authenticated_user_can_add_a_article()
     {
 
-        $this->post('/api/article', $this->data());
+        $response = $this->post('/api/article', $this->data());
 
         $article = Article::first();
 
         $this->assertEquals('Test Article Title', $article->title);
         $this->assertEquals('Test Article Body', $article->body);
         $this->assertEquals('This is an Article Excerpt', $article->excerpt);
+
+        $response->assertStatus(Response::HTTP_CREATED);
+        $response->assertJson([
+            'data' => [
+                'article_id' => $article->id
+            ],
+            'links' => [
+                'self' => $article->path()
+            ]
+        ]);
 
     }
 
@@ -137,6 +154,16 @@ class ArticlesTest extends TestCase
         $this->assertEquals('Test Article Body', $article->body);
         $this->assertEquals('This is an Article Excerpt', $article->excerpt);
 
+        $response->assertStatus(Response::HTTP_OK);
+        $response->assertJson([
+            'data' => [
+                'article_id' => $article->id,
+            ],
+            'links' => [
+                'self' => $article->path()
+            ]
+        ]);
+
     }
 
     /** @test */
@@ -161,6 +188,7 @@ class ArticlesTest extends TestCase
         $response = $this->delete('/api/article/' . $article->id, ['api_token' => $this->user->api_token]);
 
         $this->assertCount(0, Article::all());
+        $response->assertStatus(Response::HTTP_NO_CONTENT);
     }
 
     /** @test */
@@ -175,7 +203,6 @@ class ArticlesTest extends TestCase
         $response->assertStatus((403));
 
     }
-
 
     private function data()
     {

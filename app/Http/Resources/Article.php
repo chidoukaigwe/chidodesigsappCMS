@@ -16,13 +16,17 @@ class Article extends JsonResource
     {
         //  Put In Exactly What You Want To Return To Your API
         return [
-            'article_id' => $this->id,
-            'title' => $this->title,
-            'body' => htmlspecialchars_decode($this->body),
-            'excerpt' => $this->excerpt,
-            'created_at' => $this->created_at->format('m/d/Y'),
-            'last_updated' => $this->updated_at->diffForHumans(),
-
+            'data' =>  [
+                'article_id' => $this->id,
+                'title' => $this->title,
+                'body' => htmlspecialchars_decode($this->body),
+                'excerpt' => $this->excerpt,
+                'created_at' => $this->created_at->format('m/d/Y'),
+                'last_updated' => $this->updated_at->diffForHumans(),
+            ],
+            'links' => [
+                'self' => $this->path()
+            ]
         ];
     }
 

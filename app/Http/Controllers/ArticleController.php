@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Article;
-use App\Http\Resources\Article as ArticleResource;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+use App\Http\Resources\Article as ArticleResource;
 
 class ArticleController extends Controller
 {
@@ -12,6 +13,8 @@ class ArticleController extends Controller
     public function index()
     {
         $this->authorize('viewAny', Article::class);
+
+        Article::paginate(5);
 
         return ArticleResource::collection(request()->user()->articles);
 
@@ -24,7 +27,11 @@ class ArticleController extends Controller
 
         //  fetch user that made req
         //  use the article relationship on the user to do the creation
-       request()->user()->articles()->create($this->validateData());
+       $article = request()->user()->articles()->create($this->validateData());
+
+       return (new ArticleResource($article))
+                ->response()
+                ->setStatusCode(Response::HTTP_CREATED);
 
     }
 
@@ -37,7 +44,6 @@ class ArticleController extends Controller
          *   }
          */
 
-        //  Can a user view this article?
         $this->authorize('view', $article);
 
         return new ArticleResource($article);
@@ -50,6 +56,10 @@ class ArticleController extends Controller
 
         $article->update($this->validateData());
 
+        return (new ArticleResource($article))
+                ->response()
+                ->setStatusCode(Response::HTTP_OK);
+
     }
 
     public function destroy(Article $article)
@@ -57,8 +67,9 @@ class ArticleController extends Controller
 
         $this->authorize('view', $article);
 
-
         $article->delete();
+
+        return response([], Response::HTTP_NO_CONTENT);
 
     }
 
