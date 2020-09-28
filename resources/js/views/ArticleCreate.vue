@@ -5,20 +5,11 @@
         <hr>
         <form @submit.prevent="addArticle" class="mt-3">
 
-            <div class="form-group mb-3">
-                <label for="title">Add A Post Title *</label>
-                <input type="text" id="title" class="form-control" placeholder="Title" v-model="article.title">
-            </div>
+            <InputField name="title" label="Add A Post Title *" :errors="errors" placeholder="Title" @update:field="article.title = $event" />
 
-            <label for="body">Add Post Content *</label>
-            <div class="form-group mt-3" id="editor">
-                <textarea class="form-control" id="body" placeholder="Body" v-model="article.body"></textarea>
-            </div>
+            <TextareaField name="body" :errors="errors" @update:textarea="article.body = $event"/>
 
-             <div class="form-group mt-3">
-                <label for="excerpt">Add Post Excerpt *</label>
-                <textarea class="form-control" id="excerpt" placeholder="Excerpt" v-model="article.excerpt"></textarea>
-            </div>
+            <InputField name="excerpt" label="Add A Post Excerpt*" :errors="errors" placeholder="Excerpt" @update:field="article.excerpt = $event" />
 
             <button type="submit" class="btn btn-lg btn-primary mt-3">Publish</button>
         </form>
@@ -30,31 +21,41 @@
     //  Bring in CKEditor
     const ClassicEditor = require( '@ckeditor/ckeditor5-build-classic');
 
+    import InputField from '../components/InputField';
+    import TextareaField from '../components/TextareaField';
+
     export default {
         name: "ArticleCreate",
+
+        components:{
+            InputField,
+            TextareaField
+        },
 
         data() {
             return{
                  article: {
                     id: '',
                     title: '',
+                    body: '',
                     excerpt:'',
-                    body: ''
                 },
                 article_id: '',
+                errors: null,
             }
         },
 
         methods: {
 
             addArticle: function () {
-                this.article.body = editor.getData();
+               this.article.body = editor.getData();
+
                 axios.post('/api/article', this.article)
                 .then(response => {
-
+                    this.$router.push(response.data.links.self)
                 })
                 .catch(errors => {
-
+                    this.errors = errors.response.data.errors;
                 });
            },
 

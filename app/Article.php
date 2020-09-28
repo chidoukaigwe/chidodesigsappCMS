@@ -16,7 +16,7 @@ class Article extends Model
 
     public function path()
     {
-        return url('/article/' . $this->id);
+        return '/article/' . $this->id;
     }
 
 }

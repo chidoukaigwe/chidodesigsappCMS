@@ -11,4 +11,5 @@ This SPA is a self consuming API, built as a content management system that feed
 ### Codebase Notes & Features
 - Need to check `<a>` tags to posts are rendering `href` links properly. Internal links created within the editor
 - Need to add images to post creations
+- Fix Articles Creation validation errors
 

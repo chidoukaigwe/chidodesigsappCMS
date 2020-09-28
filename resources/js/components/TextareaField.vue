@@ -21,7 +21,8 @@ export default {
         'body',
         'label',
         'placeholder',
-        'errors'
+        'errors',
+        'data'
     ],
 
     data: function () {
@@ -42,6 +43,12 @@ export default {
             }
         }
 
+    },
+
+      watch: {
+        data: function (val) {
+            this.value = val;
+        }
     }
 
 }

@@ -1,9 +1,9 @@
 <template>
      <div class="form-group mb-3">
-            <label :for="title">{{label}}</label>
-            <input type="text" :id="title" class="form-control" :placeholder="placeholder" v-model="value" @input="updateField()">
+            <label :for="name">{{label}}</label>
+            <input type="text" :id="name" class="form-control" :placeholder="placeholder" v-model="value" @input="updateField()">
 
-            <p class="small text-danger" v-text="errorMessage(title)"></p>
+            <p class="small text-danger" v-text="errorMessage(name)"></p>
      </div>
 </template>
 
@@ -12,10 +12,11 @@ export default {
     name: "InputField",
 
     props: [
-        'title',
+        'name',
         'label',
         'placeholder',
-        'errors'
+        'errors',
+        'data'
     ],
 
     data: function () {
@@ -35,6 +36,12 @@ export default {
             }
         }
 
+    },
+
+    watch: {
+        data: function (val) {
+            this.value = val;
+        }
     }
 }
 </script>
