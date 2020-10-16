@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Article extends Model
 {
+    use Searchable;
+
     protected $guarded = [];
 
     //  This article belongs to a user

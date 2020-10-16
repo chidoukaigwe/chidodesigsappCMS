@@ -59,5 +59,8 @@ Route::middleware('auth:api')->group(function() {
     //  Delete Article
     Route::delete('article/{article}', 'ArticleController@destroy');
 
+    //  Search
+    Route::post('/search', 'SearchController@index');
+
 });
 

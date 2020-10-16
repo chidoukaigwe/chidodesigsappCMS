@@ -1,6 +1,8 @@
 <template>
     <div class="container">
-
+        <div>
+            <a href="#" type="button" class="btn btn-lg btn-info mb-3 text-white" @click="$router.back()"> &larr; Back</a>
+        </div>
         <h2>Create A New Post</h2>
         <hr>
         <form @submit.prevent="addArticle" class="mt-3">

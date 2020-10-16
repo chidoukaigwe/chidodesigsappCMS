@@ -10,7 +10,8 @@ yarn-error.log
 .env
 /public/.htaccess
 /storage
-storage/*.key
+/storage/*.key
+/storage/*.index
 .env.backup
 
 # Ignore cache
