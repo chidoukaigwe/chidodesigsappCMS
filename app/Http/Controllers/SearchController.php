@@ -15,7 +15,9 @@ class SearchController extends Controller
             'searchTerm' => 'required',
         ]);
 
-        $articles = Article::search($data['searchTerm'])->get();
+        $articles = Article::search($data['searchTerm'])
+            ->where('user_id', request()->user()->id)
+            ->get();
 
         return ArticleResource::collection($articles);
     }

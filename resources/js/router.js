@@ -5,18 +5,42 @@ import ArticleCreate from './views/ArticleCreate';
 import ArticleShow from './views/ArticleShow';
 import ArticleEdit from './views/ArticleEdit';
 import ArticlesIndex from './views/ArticlesIndex';
+import Dashboard from './views/Dashboard';
 
 //  To use a vue plugin, you use Vue.use
 Vue.use(VueRouter);
 
 export default new VueRouter({
 
-    routes:[
-        { path: '/', component:ExampleComponent},
-        { path: '/articles', component:ArticlesIndex},
-        { path: '/article/create', component:ArticleCreate},
-        { path: '/article/:id', component:ArticleShow},
-        { path: '/article/:id/edit', component:ArticleEdit}
+    routes: [{
+            path: '/',
+            component: Dashboard,
+            meta: { title: 'Welcome' },
+        },
+
+        {
+            path: '/articles',
+            component: ArticlesIndex,
+            meta: { title: 'Articles' },
+        },
+
+        {
+            path: '/article/create',
+            component: ArticleCreate,
+            meta: { title: 'Add New Article' },
+        },
+
+        {
+            path: '/article/:id',
+            component: ArticleShow,
+            meta: { title: 'Details For Article' },
+        },
+
+        {
+            path: '/article/:id/edit',
+            component: ArticleEdit,
+            meta: { title: 'Edit Article' },
+        }
     ],
     mode: 'history'
 

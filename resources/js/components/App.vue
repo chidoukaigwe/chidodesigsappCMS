@@ -2,6 +2,7 @@
     <div class="container-fluid">
 
         <ul class="nav justify-content-around mb-5 d-flex flex-row">
+            <router-link to='/' class="nav-link nav-item">Dashboard</router-link>
             <router-link to="/articles" class="nav-link nav-item">
                 Articles
             </router-link>
@@ -14,6 +15,7 @@
         </ul>
 
         <router-view></router-view>
+
     </div>
 </template>
 
@@ -31,6 +33,9 @@
         },
 
         created() {
+
+            this.title = this.$route.meta.title;
+
             window.axios.interceptors.request.use(
                 (config) => {
 
@@ -53,6 +58,23 @@
 
                 }
             )
+        },
+
+        data: function () {
+            return {
+                title: '',
+            }
+        },
+
+        watch: {
+
+            $route(to, from) {
+                this.title = to.meta.title
+            },
+
+            title() {
+                document.title = this.title + ' | Chido Designs CMS'
+            }
         }
     }
 </script>

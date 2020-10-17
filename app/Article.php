@@ -9,6 +9,22 @@ class Article extends Model
 {
     use Searchable;
 
+    public $asYouType = true;
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        // Customize array...
+
+        return $array;
+    }
+
     protected $guarded = [];
 
     //  This article belongs to a user

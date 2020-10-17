@@ -7,7 +7,8 @@
       </div>
     </div>
 
-    <div v-else>
+    <div v-else class="row">
+
       <div v-if="articles.length === 0">
         <p>
           No articles yet/
@@ -15,7 +16,12 @@
         </p>
       </div>
 
-      <div v-for="article in articles" :key="article.title" class="card border-primary mb-3" style="width: 18rem;">
+      <div v-else class="container">
+          <h2 class="mt-3 mb-3 text-primary">Latest Articles</h2>
+          <hr>
+      </div>
+
+      <div v-for="article in articles" :key="article.title" class="card border-primary mx-3 mt-3 mb-3 col-sm-3">
         <router-link :to="'/article/' + article.data.article_id">
           <div class="card-header bg-transparent border-primary mb-3 text-center">
             <h4 class="card-title text-primary">{{ article.data.title }}</h4>

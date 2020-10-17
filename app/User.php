@@ -40,6 +40,6 @@ class User extends Authenticatable
     //  A Simple Laravel Relationship For Articles
     public function articles()
     {
-        return $this->hasMany(Article::class);
+        return $this->hasMany(Article::class)->orderBy('created_at', 'desc');
     }
 }
