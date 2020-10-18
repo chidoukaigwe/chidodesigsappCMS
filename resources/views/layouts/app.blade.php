@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Chido Designs App Conntent Management System</title>
+    <title>Chido Designs App Conntent Management System Version 1</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Chido Designs Content Management System
+                    Chido Designs Content Management System Version 1
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
