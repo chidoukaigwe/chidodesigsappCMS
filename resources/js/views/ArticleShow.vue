@@ -31,7 +31,7 @@
                 <div class="card-header">
                     The Excerpt
                 </div>
-                <p class="card-body">{{article.excerpt}}</p>
+                <p class="card-body" v-html="article.excerpt">{{article.excerpt}}</p>
             </div>
 
             <div class="card mt-3 mb-3">

@@ -28,7 +28,7 @@
           </div>
         </router-link>
           <div class="card-body text-primary mb-3">
-            <p class="card-text">{{ article.data.excerpt }}</p>
+            <p class="card-text" v-html="article.data.excerpt">{{ article.data.excerpt }}</p>
           </div>
           <div class="card-footer bg-transparent border-primary text-primary text-center">{{'Created On: ' + article.data.created_at}}</div>
       </div>
