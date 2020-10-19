@@ -2,9 +2,30 @@
   <div class="container">
 
     <div v-if="loading" class="text-center">
+
       <div class="spinner-border" role="status">
         <span class="sr-only">Loading...</span>
       </div>
+
+    </div>
+
+    <div v-else-if="showErrorContainer" class="text-center jumbotron jumbotron-fluid">
+
+      <div class="container text-center">
+
+        <h1 class="display-4">Articles Not Found</h1>
+        <p class="lead">Sorry I am unable to fetch the list of articles requested by you.</p>
+
+        <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+          <div class="card-header">Articles Api Computed Error Message</div>
+            <div class="card-body">
+            <h5 class="card-title">Error Message</h5>
+            <p class="card-text">{{errorMessage}}</p>
+          </div>
+        </div>
+
+      </div>
+
     </div>
 
     <div v-else class="row">
@@ -49,8 +70,9 @@ export default {
         this.loading = false;
       })
       .catch((error) => {
+        this.showErrorContainer = true
         this.loading = false;
-        alert("Unable to fetch contacts");
+        this.errorMessage = error;
       });
   },
 
@@ -58,6 +80,8 @@ export default {
     return {
       loading: true,
       articles: null,
+      errorMessage: '',
+      showErrorContainer: false
     };
   },
 };
