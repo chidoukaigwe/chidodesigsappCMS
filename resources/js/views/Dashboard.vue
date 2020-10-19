@@ -15,6 +15,7 @@
                 <li><strong>User Interface:</strong> Create a new UI for the content management system.</li>
                 <li><strong>Main header:</strong> Logout and main user display is handled via Laravel, change to Vue.js navbar.</li>
                 <li><strong>Refactor Vue JS Code:</strong> Convert repeated HTML into reusable Vue components.</li>
+                <li><strong>Add An Api Error Container:</strong> Show specific container message on api error calls.</li>
             </ul>
         </div>
     </div>
