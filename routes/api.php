@@ -22,10 +22,8 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-// //  List All Articles
-// Route::get('articles', 'ArticleController@index');
-
-
+//  Create A Public Article
+Route::post('/articles/public', 'PublicArticleController@store');
 
 // //  Create New Article
 // Route::post('/article', 'ArticleController@store');
@@ -54,6 +52,7 @@ Route::middleware('auth:api')->group(function() {
     //  List Single Article
     Route::get('/article/{article}', 'ArticleController@show');
 
+    //  Edit Article
     Route::patch('/article/{article}', 'ArticleController@update');
 
     //  Delete Article
