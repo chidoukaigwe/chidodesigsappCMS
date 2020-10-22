@@ -25,6 +25,12 @@ body {
 
 footer {
     flex-shrink: 0;
+    @media screen and (max-width: 768px) {
+        .footer-statement {
+            width: 96%;
+            margin: 0 auto;
+        }
+    }
 }
 
 .ck-editor__editable {

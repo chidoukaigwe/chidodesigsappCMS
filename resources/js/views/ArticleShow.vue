@@ -10,9 +10,9 @@
 
        <div v-else>
 
-            <div>
-                <a href="#" type="button" class="btn btn-lg btn-info mb-3 text-white" @click="$router.back()"> &larr; Back</a>
-            </div>
+            <!-- <div>
+                <a href="" type="button" class="btn btn-lg btn-info mb-3 text-white" @click="$router.back()"> &larr; Back</a>
+            </div> -->
 
             <div class="card">
 

@@ -78,7 +78,7 @@
     </div>
     <hr>
     <footer class="my-5 pt-5 text-muted text-center text-small footer">
-        <p class="mb-1">&copy; <?php echo date('Y');?> Chido Designs Portfolio Website Content Management System</p>
+        <p class="mb-1 footer-statement">&copy; <?php echo date('Y');?> Chido Designs Portfolio Website Content Management System</p>
         <ul class="list-inline">
           <li class="list-inline-item"><a href="#">Privacy</a></li>
           <li class="list-inline-item"><a href="#">Terms</a></li>

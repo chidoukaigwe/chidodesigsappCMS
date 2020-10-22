@@ -1,20 +1,28 @@
 <template>
-    <div class="container">
-        <div>
-            <a href="#" type="button" class="btn btn-sm btn-danger mb-3 text-white" @click="$router.back()"> &larr; Back</a>
-        </div>
+    <div class="container mb-5 mt-5">
         <h2>Create A New Post</h2>
         <hr>
-        <form @submit.prevent="addArticle" class="mt-3">
+        <div class="row">
+            <div class="col-sm-9">
+                <form @submit.prevent="addArticle" class="mt-3">
 
-            <InputField name="title" label="Add A Post Title *" :errors="errors" placeholder="Title" @update:field="article.title = $event" />
+                    <InputField name="title" label="Add A Post Title *" :errors="errors" placeholder="Title" @update:field="article.title = $event" />
 
-            <TextareaField name="body" :errors="errors" @update:textarea="article.body = $event"/>
+                    <TextareaField name="body" :errors="errors" @update:textarea="article.body = $event"/>
 
-            <InputField name="excerpt" label="Add A Post Excerpt*" :errors="errors" placeholder="Excerpt" @update:field="article.excerpt = $event" />
+                    <InputField name="excerpt" label="Add A Post Excerpt*" :errors="errors" placeholder="Excerpt" @update:field="article.excerpt = $event" />
 
-            <button type="submit" class="btn btn-lg btn-primary mt-3">Publish</button>
-        </form>
+                    <button type="submit" class="btn btn-lg btn-primary mt-3">Publish</button>
+                </form>
+            </div>
+            <div class="col-sm-3">
+                <!-- <div class="card">
+                    <div class="card-body text-center">
+                        <a href="" @click="$router.back()"> &larr; Go Back</a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
     </div>
 
 </template>
@@ -78,6 +86,17 @@
     };
 </script>
 
-<style lang="scoped">
+<style scoped>
+
+    @media only screen and (max-width: 768px) {
+
+        /* Hide Back Button In Mobile View */
+
+        .back-btn{
+            display: none;
+        }
+
+    }
+
 
 </style>

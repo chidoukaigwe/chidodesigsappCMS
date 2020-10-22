@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
 
-        <ul class="nav justify-content-around mb-5 d-flex flex-row nav-pills nav-fill">
+        <nav class="navbar nav-pills nav-fill">
 
             <li class="nav-link nav-item align-self-center" :class="[currentPage.includes('/dashboard') ? activeClass : '']">
                 <router-link to='/dashboard'>Dashboard</router-link>
@@ -15,10 +15,10 @@
                 <router-link to="/article/create">Add New Article</router-link>
             </li>
 
-            <li class="nav-link nav-item">
+            <li class="nav-link nav-item searchform">
                 <SearchForm/>
             </li>
-        </ul>
+        </nav>
 
         <router-view></router-view>
 
@@ -94,6 +94,17 @@
 
     .router-link-active{
         color: white;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .navbar {
+            display: block;
+        }
+
+        .searchform {
+            margin: 8% 0;
+            padding: 0;
+        }
     }
 
 

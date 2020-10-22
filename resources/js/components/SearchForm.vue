@@ -4,7 +4,7 @@
         <input class="form-control mr-sm-2" type="text" placeholder="Search Articles..." aria-label="Search" id="searchTerm" v-model="searchTerm" @input="search" @focus="focus = true">
 
 
-         <div v-if="focus">
+         <div v-if="focus" class="searchform-div">
             <div class="card">
                 <ul class="list-group list-group-flush" v-if="results == 0">
                    <li class="list-group-item"> No results found for '{{searchTerm}}'</li>
@@ -57,5 +57,9 @@ export default {
 </script>
 
 <style scoped>
+
+    .searchform-div{
+        margin-bottom: -20%;
+    }
 
 </style>

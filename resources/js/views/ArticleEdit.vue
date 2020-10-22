@@ -1,9 +1,9 @@
 <template>
     <div class="container">
 
-        <div>
+        <!-- <div>
             <a href="#" type="button" class="btn btn-sm btn-danger mb-3 text-white" @click="$router.back()"> &larr; Back</a>
-        </div>
+        </div> -->
 
         <h2>{{'Edit: ' + article.title}}</h2>
         <hr>
