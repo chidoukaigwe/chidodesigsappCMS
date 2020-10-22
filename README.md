@@ -17,7 +17,7 @@ An API driven application, built with Laravel resource collections. The applicat
 
 ![alt text][logo]
 
-[logo]: https://raw.githubusercontent.com/chidoukaigwe/chidodesigsappCMS/master/chido-designs-cms-screenshot.png "App Screenshot"
+[logo]: https://github.com/chidoukaigwe/chidodesigsappCMS/blob/master/cms-screenshot.png?raw=true "App Screenshot"
 
 ## Upcoming Features (Version 2)
   - Blogging Feature:Add image upload to article creation.
