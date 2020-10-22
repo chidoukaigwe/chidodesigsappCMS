@@ -13,7 +13,7 @@ Vue.use(VueRouter);
 export default new VueRouter({
 
     routes: [{
-            path: '/',
+            path: '/dashboard',
             component: Dashboard,
             meta: { title: 'Welcome' },
         },

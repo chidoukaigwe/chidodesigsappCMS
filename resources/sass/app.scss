@@ -1,12 +1,32 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+//  Global Level Styles
+html,
+body {
+    height: 100%;
+}
 
-.ck-editor__editable{
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    flex: 1 0 auto;
+}
+
+.navbar-brand {
+    width: 75%;
+}
+
+footer {
+    flex-shrink: 0;
+}
+
+.ck-editor__editable {
     height: 300px;
 }

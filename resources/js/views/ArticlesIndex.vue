@@ -70,9 +70,9 @@ export default {
         this.loading = false;
       })
       .catch((error) => {
-        this.showErrorContainer = true
         this.loading = false;
-        this.errorMessage = error;
+         this.errorMessage = error;
+        this.showErrorContainer = true
       });
   },
 

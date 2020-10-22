@@ -5,7 +5,7 @@
 
 
          <div v-if="focus">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <ul class="list-group list-group-flush" v-if="results == 0">
                    <li class="list-group-item"> No results found for '{{searchTerm}}'</li>
                 </ul>

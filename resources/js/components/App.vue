@@ -1,17 +1,23 @@
 <template>
     <div class="container-fluid">
 
-        <ul class="nav justify-content-around mb-5 d-flex flex-row">
-            <router-link to='/' class="nav-link nav-item">Dashboard</router-link>
-            <router-link to="/articles" class="nav-link nav-item">
-                Articles
-            </router-link>
-             <router-link to="/article/create" class="nav-link nav-item">
-                Add New Article
-            </router-link>
-            <div>
+        <ul class="nav justify-content-around mb-5 d-flex flex-row nav-pills nav-fill">
+
+            <li class="nav-link nav-item align-self-center" :class="[currentPage.includes('/dashboard') ? activeClass : '']">
+                <router-link to='/dashboard'>Dashboard</router-link>
+            </li>
+
+            <li class="nav-link nav-item align-self-center" :class="[currentPage.includes('/articles') ? activeClass : '']">
+                <router-link to="/articles">Articles</router-link>
+            </li>
+
+            <li class="nav-link nav-item align-self-center" :class="[currentPage.includes('/article/create') ? activeClass : '']">
+                <router-link to="/article/create">Add New Article</router-link>
+            </li>
+
+            <li class="nav-link nav-item">
                 <SearchForm/>
-            </div>
+            </li>
         </ul>
 
         <router-view></router-view>
@@ -53,7 +59,6 @@
                      }
 
 
-
                     return config
 
                 }
@@ -63,6 +68,7 @@
         data: function () {
             return {
                 title: '',
+                activeClass: 'active',
             }
         },
 
@@ -75,10 +81,20 @@
             title() {
                 document.title = this.title + ' | Chido Designs CMS'
             }
-        }
+        },
+        computed: {
+            currentPage() {
+                return this.$route.path;
+            }
+        },
     }
 </script>
 
-<style lang="scoped">
+<style scoped>
+
+    .router-link-active{
+        color: white;
+    }
+
 
 </style>

@@ -20,11 +20,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="wrapper">
         <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Chido Designs Content Management System Version 1
+                <a class="navbar-brand" href="{{ url('/dashboard') }}">
+                    Chido Designs CMS
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -77,7 +77,7 @@
         </main>
     </div>
     <hr>
-    <footer class="my-5 pt-5 text-muted text-center text-small">
+    <footer class="my-5 pt-5 text-muted text-center text-small footer">
         <p class="mb-1">&copy; <?php echo date('Y');?> Chido Designs Portfolio Website Content Management System</p>
         <ul class="list-inline">
           <li class="list-inline-item"><a href="#">Privacy</a></li>
