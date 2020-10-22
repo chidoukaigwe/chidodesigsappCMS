@@ -15,6 +15,10 @@ An API driven application, built with Laravel resource collections. The applicat
 4. Edit your newly published article 
 5. Search for a specific article within your database.
 
+![alt text][logo]
+
+[logo]: https://raw.githubusercontent.com/chidoukaigwe/chidodesigsappCMS/master/chido-designs-cms-screenshot.png "App Screenshot"
+
 ## Upcoming Features (Version 2)
   - Blogging Feature:Add image upload to article creation.
   - Blogging Feature: Tagging and Categorisation of articles.
