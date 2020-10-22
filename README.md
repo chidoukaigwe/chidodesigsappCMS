@@ -26,7 +26,7 @@ An API driven application, built with Laravel resource collections. The applicat
 - Install Composer Packages: `composer install`
 - Configure `.env` file and Set Up Database
 - Install NPM Packages: `npm install`
-- Compile & Watch Files: `npm run development --watch`
+- Compile & Watch Files: `npm run watch`
 - Start Up Laravel Server: `php artisan serve`
 
 ### Testing Suite (phpunit):
