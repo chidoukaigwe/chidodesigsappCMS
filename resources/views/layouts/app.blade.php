@@ -76,7 +76,6 @@
             @yield('content')
         </main>
     </div>
-    <hr>
     <footer class="my-5 pt-5 text-muted text-center text-small footer">
         <p class="mb-1 footer-statement">&copy; <?php echo date('Y');?> Chido Designs Portfolio Website Content Management System</p>
         <ul class="list-inline">
