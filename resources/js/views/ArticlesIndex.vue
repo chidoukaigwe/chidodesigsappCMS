@@ -9,7 +9,7 @@
 
     </div>
 
-    <!-- <div v-else-if="showErrorContainer" class="text-center jumbotron jumbotron-fluid">
+    <div v-else-if="showErrorContainer" class="text-center jumbotron jumbotron-fluid">
 
       <div class="container text-center">
 
@@ -26,7 +26,7 @@
 
       </div>
 
-    </div> -->
+    </div>
 
     <div v-else class="row">
 
